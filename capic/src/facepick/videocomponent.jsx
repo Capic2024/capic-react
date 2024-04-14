@@ -39,10 +39,13 @@ function VideoComponent() {
   });
 
   const s3 = new AWS.S3();
+  const uuid = sessionStorage.getItem('uuid');
+  const name = sessionStorage.getItem('fileName');
 
   useEffect(() => {
     const getVideo = async () => {
-      const filename = 'upload/video.mp4';
+      const filename = uuid+'/'+name;
+      console.log("filename : "+filename);
 
       try {
         const data = await s3.getObject({

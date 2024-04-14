@@ -4,6 +4,7 @@ import VideoComponent from './videocomponent';
 import Header from "../header/header";
 import SliderComponent from "./slider";
 import Slider from "react-slick";
+import axios from 'axios'
 
 const ComWrapper=styled.div`
     width : 100%;
@@ -48,13 +49,34 @@ line-height: normal;
 
 
 function FaceMain(){
+
+    const folder = sessionStorage.getItem("uuid"); // 폴더명
+    const file = sessionStorage.getItem("fileName"); // 파일명
+
+    //선택완료 버튼 눌렸을 때 이미지, 파일명, 동영상이름 보내줘야함(post)
+    //"http://13.125.58.137:8080/video/falsk-mosaic?folderName=test"
+    const handleSubmit = () => {
+        axios.post(`http://13.125.58.137:8080/video/falsk-mosaic?folderName=${folder}`, {
+            "videoName": "cutVideo.mp4",
+            "imageName": [
+                "gongyoo2.jpg", "goognyoo.png", "img_1.png", "img_2.png", "img.png"
+            ]
+        })
+        .then(response => {
+            console.log('Response:', response.data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
+
     return(
         <ComWrapper>
             <Header/>
             <Wrapper>
                 <LeftComponent>
                     <Box></Box>
-                    <Button>선택 완료</Button>
+                    <Button onClick={handleSubmit}>선택 완료</Button>
                 </LeftComponent>
                 <VideoComponent/>
             </Wrapper>

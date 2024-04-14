@@ -114,6 +114,10 @@ function Left(){
     
     const uploadFile = (file) => {
         const uuid = uuidv4();
+        sessionStorage.setItem('uuid', uuid);
+        sessionStorage.setItem('fileName',file.name);
+        
+        //sessionStorage.getItem('uuid');
         const params = {
             ACL: 'public-read',
             Body: file,
