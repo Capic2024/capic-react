@@ -4,6 +4,7 @@ import {motion} from 'framer-motion'
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AWS from 'aws-sdk';
+import { v4 as uuidv4 } from 'uuid';
 
 const Wrapper = styled.div`
     display: flex;
@@ -112,11 +113,12 @@ function Left(){
     // }
     
     const uploadFile = (file) => {
+        const uuid = uuidv4();
         const params = {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: "upload/" + file.name
+            Key: uuid+"/"+file.name
         };
     
         myBucket.putObject(params)
