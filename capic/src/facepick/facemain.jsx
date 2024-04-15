@@ -5,6 +5,8 @@ import Header from "../header/header";
 import SliderComponent from "./slider";
 import Slider from "react-slick";
 import axios from 'axios'
+import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 
 const ComWrapper=styled.div`
     width : 100%;
@@ -52,11 +54,14 @@ function FaceMain(){
 
     const folder = sessionStorage.getItem("uuid"); // 폴더명
     const file = sessionStorage.getItem("fileName"); // 파일명
+    const [responseFolder, setResponseFolder] = useState(null);
+    const [responseVideo, setResponseVideo] = useState(null);
 
     //선택완료 버튼 눌렸을 때 이미지, 파일명, 동영상이름 보내줘야함(post)
     //"http://13.125.58.137:8080/video/falsk-mosaic?folderName=test"
+    //http://13.125.58.137:8080/video/falsk-mosaic?folderName=${folder}
     const handleSubmit = () => {
-        axios.post(`http://13.125.58.137:8080/video/falsk-mosaic?folderName=${folder}`, {
+        axios.post(`http://13.125.58.137:8080/video/falsk-mosaic?folderName=test`, {
             "videoName": "cutVideo.mp4",
             "imageName": [
                 "gongyoo2.jpg", "goognyoo.png", "img_1.png", "img_2.png", "img.png"
@@ -64,6 +69,12 @@ function FaceMain(){
         })
         .then(response => {
             console.log('Response:', response.data);
+            setResponseFolder(response.data.folderName);
+            setResponseVideo(response.data.videoName);
+            sessionStorage.setItem("mosicFolder", responseFolder);
+            sessionStorage.setItem("mosicVideoName", responseVideo);
+            // folderName: “”,
+            // videoName:””
         })
         .catch(error => {
             console.error('Error:', error);
