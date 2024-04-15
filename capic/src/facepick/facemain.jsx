@@ -58,10 +58,10 @@ function FaceMain(){
     const [responseVideo, setResponseVideo] = useState(null);
 
     //선택완료 버튼 눌렸을 때 이미지, 파일명, 동영상이름 보내줘야함(post)
-    //"http://13.125.58.137:8080/video/falsk-mosaic?folderName=test"
-    //http://13.125.58.137:8080/video/falsk-mosaic?folderName=${folder}
+    //"http://13.125.58.137:8080/video/flask-mosaic?folderName=test"
+    //http://13.125.58.137:8080/video/flask-mosaic?folderName=${folder}
     const handleSubmit = () => {
-        axios.post(`http://13.125.58.137:8080/video/falsk-mosaic?folderName=test`, {
+        axios.post(`http://13.125.58.137:8080/video/flask-mosaic?folderName=test`, {
             "videoName": "cutVideo.mp4",
             "imageName": [
                 "gongyoo2.jpg", "goognyoo.png", "img_1.png", "img_2.png", "img.png"
