@@ -18,8 +18,8 @@ const HeaderComponent=styled.div`
 `;
 
 const Logo=styled.img`
-width: 12.5rem;
-height: 3.75rem;
+width: 200px;
+height: 60px;
 flex-shrink: 0;
 margin-bottom:1rem;
 margin-top:5rem;
