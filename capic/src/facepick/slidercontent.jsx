@@ -1,26 +1,36 @@
 import React from "react";
+import styled from 'styled-components';
 
-function SliderContent({
-    url
-}){
-    const boxStyle={
-        width: '11.25rem',
-        height: '11.25rem',
-        borderRadius: '0.5rem',
-        // position:"relative",
-    };
-    const imgStyle={
-        width: '11.25rem',
-        height: '11.25rem',
-        borderRadius: '0.5rem'
-    };
-    
+
+const Div = styled.div`
+    display: flex;
+    flex-direction : row;
+    justify-content : center;
+    margin-bottom : 1.75rem;
+`;
+
+const BoxStyle = styled.div`
+    width: 11.25rem;
+    height: 11.25rem;
+    border-radius: 0.5rem;
+    cursor : pointer;
+`;
+
+const ImgStyle = styled.img`
+    width: 11.25rem;
+    height: 11.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 8px 0px rgba(191, 196, 216, 0.40);
+`;
+
+function SliderContent({url})
+{
     return(
-        <div>
-            <div style={boxStyle}>
-                <img src={url} style={imgStyle} alt="" />
-            </div>
-        </div>
+        <Div>
+            <BoxStyle>
+                <ImgStyle src={url}/>
+            </BoxStyle>
+        </Div>
     );
 }
 

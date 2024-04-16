@@ -135,6 +135,8 @@ function Left(){
             if (err) console.log(err);
             else console.log("Upload success");
         });
+
+        
     }
     
 

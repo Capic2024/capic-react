@@ -7,6 +7,15 @@ import Slider from "react-slick";
 import axios from 'axios'
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
+import Slider0 from "../testimg/gongyoo2.jpg";
+import Slider1 from "../testimg/goognyoo.png";
+import Slider2 from "../testimg/img_1.png";
+import Slider3 from "../testimg/img_2.png";
+import Slider4 from "../testimg/img.png";
+import Slider5 from "../image/main1.png";
+import Slider6 from "../image/main1.png";
+import Slider7 from "../image/main1.png";
+import Slider8 from "../image/main1.png";
 
 const ComWrapper=styled.div`
     width : 100%;
@@ -81,6 +90,19 @@ function FaceMain(){
         });
     };
 
+    //slider 띄워줄 이미지
+    const urlData = [
+        Slider0,
+        Slider1,
+        Slider2,
+        Slider3,
+        Slider4,
+        Slider5,
+        Slider6,
+        Slider7,
+        Slider8
+    ];
+
     return(
         <ComWrapper>
             <Header/>
@@ -91,7 +113,7 @@ function FaceMain(){
                 </LeftComponent>
                 <VideoComponent/>
             </Wrapper>
-            <SliderComponent/>
+            <SliderComponent urlData={urlData}/>
         </ComWrapper>
     );
 }
