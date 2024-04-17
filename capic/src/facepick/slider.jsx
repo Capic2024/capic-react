@@ -8,7 +8,6 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import left from "../image/left.png";
 import right from "../image/right.svg";
-// import main1 from "../image/main1.png";
 // import React, { useState } from 'react';
 
 
@@ -47,7 +46,6 @@ function Slider({urlData}){
         fontWeight: '700',
         lineHeight: 'normal',
         marginTop:"3rem",
-        marginBottom:"1.5rem",
     };
 
     const SlideContainer = {
@@ -57,17 +55,15 @@ function Slider({urlData}){
 
 
     const CustomPrevArrow = (props) => (
-        <ArrowButton className="slick-prev" onClick={props.onClick} src={left}>
-        </ArrowButton>
+        <ArrowButton className="slick-prev" onClick={props.onClick} src={left}/>
     );
     
     const CustomNextArrow = (props) => (
-        <ArrowButton className="slick-next" onClick={props.onClick} src={right}>
-        </ArrowButton>
+        <ArrowButton className="slick-next" onClick={props.onClick} src={right}/>
     );
-    
+
     const settings = {
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 5,
