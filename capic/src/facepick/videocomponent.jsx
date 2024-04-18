@@ -46,8 +46,8 @@ function VideoComponent() {
 
   useEffect(() => {
     const getVideo = async () => {
-      //const filename = uuid+'/'+name;
-      const filename = folderName+"/"+videoName; //마지막 컴포넌트로 이동
+      const filename = uuid+'/'+name;
+      //const filename = folderName+"/"+videoName; //마지막 컴포넌트로 이동
       console.log("filename : "+filename);
 
       try {

@@ -125,7 +125,6 @@ function Result() {
         await deleteFolderContents(bucketName, folderPrefix);
         console.log('Folder contents deleted successfully');
     };
-
     
     return (
         <>
