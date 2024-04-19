@@ -12,9 +12,9 @@ import Slider1 from "../testimg/goognyoo.png";
 import Slider2 from "../testimg/img_1.png";
 import Slider3 from "../testimg/img_2.png";
 import Slider4 from "../testimg/img.png";
-import Slider5 from "../image/main1.png";
-import Slider6 from "../image/main1.png";
-import Slider7 from "../image/main1.png";
+import Slider5 from "../testimg/hwan.png";
+import Slider6 from "../testimg/seho.png";
+import Slider7 from "../testimg/yoo1.png";
 import Slider8 from "../image/main1.png";
 
 const ComWrapper=styled.div`
@@ -100,7 +100,7 @@ function FaceMain(){
         Slider5,
         Slider6,
         Slider7,
-        Slider8
+        //Slider8
     ];
 
     return(
