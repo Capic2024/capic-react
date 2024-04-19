@@ -12,9 +12,9 @@ import Slider1 from "../testimg/goognyoo.png";
 import Slider2 from "../testimg/img_1.png";
 import Slider3 from "../testimg/img_2.png";
 import Slider4 from "../testimg/img.png";
-import Slider5 from "../testimg/yoo1.png";
-import Slider6 from "../testimg/yoo2.png";
-import Slider7 from "../testimg/yoo3.png";
+import Slider5 from "../testimg/hwan.png";
+import Slider6 from "../testimg/seho.png";
+import Slider7 from "../testimg/yoo1.png";
 import Slider8 from "../image/main1.png";
 
 const ComWrapper=styled.div`
@@ -92,13 +92,13 @@ function FaceMain(){
 
     //slider 띄워줄 이미지
     const urlData = [
-        //Slider0,
-        //Slider1,
-        //Slider2,
-        //Slider3,
-        //Slider4,
-        //Slider5,
-        //Slider6,
+        Slider0,
+        Slider1,
+        Slider2,
+        Slider3,
+        Slider4,
+        Slider5,
+        Slider6,
         Slider7,
         //Slider8
     ];
