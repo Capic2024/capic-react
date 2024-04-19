@@ -31,23 +31,24 @@ function VideoComponent() {
   const S3_BUCKET=process.env.REACT_APP_bucket;
   const REGION = process.env.REACT_APP_region;
 
-
   AWS.config.update({
     region: REGION,
     accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY,
+    Bucket:S3_BUCKET,
   });
 
   const s3 = new AWS.S3();
-  const uuid = sessionStorage.getItem('uuid');
-  const name = sessionStorage.getItem('fileName');
-  const folderName = sessionStorage.getItem('mosicFolder'); //마지막 컴포넌트로 이동
+  //const uuid = sessionStorage.getItem('uuid');
+  const uuid = "test"
+  //const name = sessionStorage.getItem('fileName');
+  //const folderName = sessionStorage.getItem('mosicFolder'); //마지막 컴포넌트로 이동
   const videoName = sessionStorage.getItem('mosicVideoName'); //마지막 컴포넌트로 이동
 
   useEffect(() => {
     const getVideo = async () => {
-      const filename = uuid+'/'+name;
-      //const filename = folderName+"/"+videoName; //마지막 컴포넌트로 이동
+      //const filename = uuid+'/'+name;
+      const filename = uuid+"/"+videoName;
       console.log("filename : "+filename);
 
       try {

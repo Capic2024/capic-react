@@ -71,7 +71,7 @@ function FaceMain(){
     //"https://capic.co.kr/video/flask-mosaic?folderName=test"
     //https://capic.co.kr/video/flask-mosaic?folderName=${folder}
     const handleSubmit = () => {
-        axios.post(`https://capic.co.kr/video/flask-mosaic?folderName=test`, {
+        axios.post(`http://13.125.58.137:8080/video/flask-mosaic?folderName=test`, {
             "videoName": "cutVideo.mp4",
             "imageName": [
                 "gongyoo2.jpg", "goognyoo.png", "img_1.png", "img_2.png", "img.png"
@@ -79,12 +79,13 @@ function FaceMain(){
         })
         .then(response => {
             console.log('Response:', response.data);
-            setResponseFolder(response.data.folderName);
-            setResponseVideo(response.data.videoName);
+            //setResponseFolder(response.data.folderName);
+            //setResponseVideo(response.data.videoName);
+            setResponseVideo(response.data.data);
+            //console.log("video name : "+responseVideo);
+            console.log("test : "+response.data.data);
             sessionStorage.setItem("mosicFolder", responseFolder);
-            sessionStorage.setItem("mosicVideoName", responseVideo);
-            // folderName: “”,
-            // videoName:””
+            sessionStorage.setItem("mosicVideoName", response.data.data);
         })
         .catch(error => {
             console.error('Error:', error);
