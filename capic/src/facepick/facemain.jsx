@@ -16,6 +16,7 @@ import Slider5 from "../testimg/hwan.png";
 import Slider6 from "../testimg/seho.png";
 import Slider7 from "../testimg/yoo1.png";
 import Slider8 from "../image/main1.png";
+import { Link } from "react-router-dom";
 
 const ComWrapper=styled.div`
     width : 100%;
@@ -109,7 +110,7 @@ function FaceMain(){
             <Wrapper>
                 <LeftComponent>
                     <Box></Box>
-                    <Button onClick={handleSubmit}>선택 완료</Button>
+                    <Link to="/mosicloading"><Button onClick={handleSubmit}>선택 완료</Button></Link>
                 </LeftComponent>
                 <VideoComponent/>
             </Wrapper>

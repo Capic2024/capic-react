@@ -6,6 +6,7 @@ import Main from './main/main';
 import Loading from './loading/loading';
 import FaceMain from './facepick/facemain';
 import Result from './result/result';
+import MosicLoading from './loading/mosicloading';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/loading" element={<Loading/>}/>
           <Route path="/pick" element={<FaceMain/>}/>
           <Route path="/result" element={<Result/>}/>
+          <Route path="/mosicloading" element={<MosicLoading/>}/>
         </Routes>
       </Router>
     </>

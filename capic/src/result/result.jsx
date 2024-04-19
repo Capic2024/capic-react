@@ -6,6 +6,7 @@ import Timeline from '../result/timeline';
 import filedown from '../image/FilePlus.svg';
 import down from '../image/Download.svg';
 import AWS from 'aws-sdk';
+import { Link } from 'react-router-dom';
 
 
 const Wrapper=styled.div`
@@ -124,6 +125,7 @@ function Result() {
         console.log("폴더명 : "+folderPrefix);
         await deleteFolderContents(bucketName, folderPrefix);
         console.log('Folder contents deleted successfully');
+        sessionStorage.clear()
     };
     
     return (
@@ -135,10 +137,10 @@ function Result() {
                 <Mosic/>
                 <Timeline/>
                 <ButtonContainer>
-                    <FilePlus onClick={handleDelete}>
+                    <Link to="/"><FilePlus onClick={handleDelete}>
                         <img src={filedown}/>
                         <Font>다른 영상 만들기</Font>
-                    </FilePlus>
+                    </FilePlus></Link>
                     
                     <Download onClick={handleDelete}>
                         <img src={down}/>
