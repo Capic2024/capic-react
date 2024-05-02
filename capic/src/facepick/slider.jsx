@@ -65,7 +65,7 @@ function Slider({urlData}){
     const settings = {
         infinite: false,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: 3,
         slidesToScroll: 5,
         dots: true,
         dotsClass: "slick-dots",
@@ -78,14 +78,14 @@ function Slider({urlData}){
             <Div>
                 <p style={TitleStyle}>CAPIC이 인식한 얼굴</p>
                     <Slide {...settings}>
-                            {urlData.map((url, index) => (
-                                <div key={index} style={SlideContainer}>
-                                    <SliderContent url={url}/>
-                                </div>
-                            ))}
+                                {urlData.map((urlData, index) => (
+                                    <div key={index} style={SlideContainer}>
+                                        <SliderContent urlData={urlData}/>
+                                    </div>
+                                ))}
                     </Slide>
             </Div>
-       </Wrapper>
+        </Wrapper>
     );
 }
 

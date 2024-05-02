@@ -40,40 +40,26 @@ const XCircle = styled.img`
 
 
 
-function SliderContent({ url, onSelectImage }) {
+function SliderContent({ urlData }) {
     const [isActive, setIsActive] = useState(false);
+    console.log("slider:" + urlData);
 
     const toggleClass = () => {
         setIsActive(!isActive); 
         //onSelectImage(url.index); 
-        console.log("url : "+url)
+        //console.log("url : "+url)
+        //console.log("url : "+index);
     };
 
     return (
         <Div onClick={toggleClass}>
             <BoxStyle>
-                <ImgStyle className={isActive ? "active" : ""} src={url} alt="Slider Image"/>
+                <ImgStyle className={isActive ? "active" : ""} src={urlData} alt="Slider Image"/>
                 {isActive && <XCircle src={xcircle} alt="X Circle"/>}
             </BoxStyle>
         </Div>
     );
 }
 
-// function SliderContent({ url }) {
-//     const [isActive, setIsActive] = useState(false);
-
-//     const toggleClass = () => {
-//         setIsActive(!isActive); 
-//     };
-
-//     return (
-//         <Div onClick={toggleClass}>
-//             <BoxStyle>
-//                 <ImgStyle className={isActive ? "active" : ""} src={url} alt="Slider Image"/>
-//                 {isActive && <XCircle src={xcircle} alt="X Circle"/>}
-//             </BoxStyle>
-//         </Div>
-//     );
-// }
 
 export default SliderContent;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState,useEffect } from "react";
 import AWS from 'aws-sdk';
-import resVid from '../testimg/res.mp4'
+import resVid from '../testimg/processed.mp4'
 
 const MosicComponent = styled.div`
 border: 1px solid var(--Gray3, #BFC4D8);

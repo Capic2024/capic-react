@@ -94,11 +94,11 @@ function FaceMain(){
 
     //slider 띄워줄 이미지
     const urlData = [
-        Slider0,
-        Slider1,
-        Slider2,
-        Slider3,
-        Slider4,
+        //Slider0,
+        //Slider1,
+        //Slider2,
+        //Slider3,
+        //Slider4,
         Slider5,
         Slider6,
         Slider7,
@@ -109,24 +109,24 @@ function FaceMain(){
 
     const [list, setList] = useState([]); // 목록 배열 생성
 
-    // 목록 입력 함수 => 
+    // 추가 함수 => 
     function updateList(itemId) { 
     setList((prevList) =>
       prevList.map((item) =>
-        item.id === itemId ? {...item} : item // map 함수를 통해 id 값이 같은 곳에 새로운 할 일 내용 초기화 
+        item.id === itemId ? {...item} : item 
       )
     );
     }
 
     function updateList(item) {
-        const index = urlData.indexOf(item); // 아이템의 인덱스를 찾습니다.
+        const index = urlData.indexOf(item); // 아이템의 인덱스를 찾음
         if (index !== -1) { // 만약 아이템이 발견되면,
           setList((prevList) => {
-            // 이미 리스트에 있는지 확인합니다.
+            // 이미 리스트에 있는지 확인
             if (prevList.includes(item)) {
-              return prevList; // 이미 있는 경우에는 이전 리스트를 반환합니다.
+              return prevList; // 이미 있는 경우에는 이전 리스트를 반환
             }
-            // 새로운 아이템을 추가한 배열을 반환합니다.
+            // 새로운 아이템을 추가한 배열을 반환
             return [...prevList, item];
           });
         }
@@ -153,7 +153,8 @@ function FaceMain(){
             <Header/>
             <Wrapper>
                 <LeftComponent>
-                    <Box urlData={urlData}/>
+                {/*<Box urlData={urlData}/>*/}
+                    <Box/>
                     <Link to="/mosicloading"><Button onClick={handleSubmit}>선택 완료</Button></Link>
                 </LeftComponent>
                 <VideoComponent/>

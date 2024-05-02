@@ -35,7 +35,7 @@ line-height: 170%; /* 1.7rem */
 function Box({ url }) {
     return (
         <Wrapper>
-            <img src={url} alt="Selected Image" />
+            {/*<img src={url} alt="Selected Image" />*/}
             <Logo src={logo} />
             <Comment>블러 처리하고 싶은<br/>얼굴을 선택해 주세요.</Comment>
         </Wrapper>
