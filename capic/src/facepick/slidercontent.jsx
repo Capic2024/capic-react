@@ -12,7 +12,7 @@ const Div = styled.div`
 `;
 
 const BoxStyle = styled.div`
-    position: relative; /* Added for positioning the xcircle */
+    position: relative;
     width: 11.25rem;
     height: 11.25rem;
     border-radius: 0.5rem;
@@ -31,21 +31,22 @@ const ImgStyle = styled.img`
 
 const XCircle = styled.img`
     position: absolute;
-    top: -14px; /* 수정된 값 */
-    right: -14px; /* 수정된 값 */
+    top: -14px; 
+    right: -14px; 
     width: 2.75rem;
     height: 2.75rem;
-    z-index: 1; /* Ensures xcircle is above the image */
+    z-index: 1; 
 `;
 
 
 
-
-function SliderContent({ url }) {
+function SliderContent({ url, onSelectImage }) {
     const [isActive, setIsActive] = useState(false);
 
     const toggleClass = () => {
-        setIsActive(!isActive); // Toggle current state
+        setIsActive(!isActive); 
+        //onSelectImage(url.index); 
+        console.log("url : "+url)
     };
 
     return (
@@ -57,5 +58,22 @@ function SliderContent({ url }) {
         </Div>
     );
 }
+
+// function SliderContent({ url }) {
+//     const [isActive, setIsActive] = useState(false);
+
+//     const toggleClass = () => {
+//         setIsActive(!isActive); 
+//     };
+
+//     return (
+//         <Div onClick={toggleClass}>
+//             <BoxStyle>
+//                 <ImgStyle className={isActive ? "active" : ""} src={url} alt="Slider Image"/>
+//                 {isActive && <XCircle src={xcircle} alt="X Circle"/>}
+//             </BoxStyle>
+//         </Div>
+//     );
+// }
 
 export default SliderContent;

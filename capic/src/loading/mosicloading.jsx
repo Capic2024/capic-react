@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import styled from "styled-components";
 import loading from '../image/loading.png';
 
@@ -34,7 +34,17 @@ line-height: normal;
 function Loading(){
 
     const [ment, setMent] = useState("모자이크 처리중");
-    const success = () => {setMent("모자이크 처리중");}; //로딩중 멘트 상태관리
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            redirectToResult();
+        }, 5000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    const redirectToResult = () => {
+        window.location.href = "/result";
+    };
 
     return(
         <Componentstyle>
@@ -54,7 +64,5 @@ function Loading(){
         </Componentstyle>
     );
 }
-
-
 
 export default Loading;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState,useEffect } from "react";
 import AWS from 'aws-sdk';
+import resVid from '../testimg/res.mp4'
 
 const MosicComponent = styled.div`
 border: 1px solid var(--Gray3, #BFC4D8);
@@ -61,7 +62,7 @@ function Mosic(){
 
     return(
         <MosicComponent>
-            <video src={videoUrl} controls style={{width : "63.75rem", height: "35.9375rem"}}/>
+            <video src={resVid} controls style={{width : "63.75rem", height: "35.9375rem"}}/>
         </MosicComponent>
     );
 }

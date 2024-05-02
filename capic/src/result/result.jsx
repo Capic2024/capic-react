@@ -9,6 +9,7 @@ import AWS from 'aws-sdk';
 import { Link } from 'react-router-dom';
 
 
+
 const Wrapper=styled.div`
     width : 100%;
     display:flex;

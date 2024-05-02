@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AWS from "aws-sdk";
+import testVideo from '../testimg/prev.mp4';
 
 const Wrapper = styled.div`
   display: flex;
@@ -71,7 +72,8 @@ function VideoComponent() {
 
   return (
     <Wrapper>
-      <VideoContainer src={videoUrl} controls />
+      {/* <VideoContainer src={videoUrl} controls /> */}
+      <VideoContainer src={testVideo} controls />
       <TimeLine />
     </Wrapper>
   );
