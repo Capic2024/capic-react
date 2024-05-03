@@ -72,7 +72,7 @@ const Font = styled.div`
     text-align: center;
     /* subtitle/subtitle_extrabold_16 */
     font-family: NanumSquare;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-style: normal;
     font-weight: 800;
     line-height: normal;

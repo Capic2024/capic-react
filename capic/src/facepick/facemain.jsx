@@ -67,15 +67,13 @@ function FaceMain(){
     const [responseFolder, setResponseFolder] = useState(null);
     const [responseVideo, setResponseVideo] = useState(null);
 
-    //선택완료 버튼 눌렸을 때 이미지, 파일명, 동영상이름 보내줘야함(post)
+    //선택완료 클릭시비디오이름, 이미지 폴더이름 보내기(post)
     //"https://capic.co.kr/video/flask-mosaic?folderName=test"
     //https://capic.co.kr/video/flask-mosaic?folderName=${folder}
     const handleSubmit = () => {
-        axios.post(`http://13.125.58.137:8080/video/flask-mosaic?folderName=test`, {
-            "videoName": "cutVideo.mp4",
-            "imageName": [
-                "gongyoo2.jpg", "goognyoo.png", "img_1.png", "img_2.png", "img.png"
-            ]
+        axios.post(`http://localhost:8080/video/flask-mosaic?folderName=test`, {
+            "imageName" :["person1","person2","person3"],
+            "videoName":"cutVideo.mp4"
         })
         .then(response => {
             console.log('Response:', response.data);
@@ -116,6 +114,10 @@ function FaceMain(){
         item.id === itemId ? {...item} : item 
       )
     );
+    }
+
+    function test(array){
+        
     }
 
     function updateList(item) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AWS from "aws-sdk";
-import testVideo from '../testimg/prev.mp4';
+import testVideo from '../testimg/Video.mp4';
 
 const Wrapper = styled.div`
   display: flex;
