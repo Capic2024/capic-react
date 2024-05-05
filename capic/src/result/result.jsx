@@ -2,7 +2,6 @@ import axios from 'axios'
 import styled from "styled-components";
 import logo from '../image/logo2.jpg'
 import Mosic from '../result/mosic';
-import Timeline from '../result/timeline';
 import filedown from '../image/FilePlus.svg';
 import down from '../image/Download.svg';
 import AWS from 'aws-sdk';
@@ -136,7 +135,6 @@ function Result() {
                     <Logo src={logo}></Logo>
                 </HeaderComponent>
                 <Mosic/>
-                <Timeline/>
                 <ButtonContainer>
                     <Link to="/"><FilePlus onClick={handleDelete}>
                         <img src={filedown}/>

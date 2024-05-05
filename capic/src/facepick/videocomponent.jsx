@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AWS from "aws-sdk";
-import testVideo from '../testimg/Video.mp4';
+import testVideo from '../testimg/video.mp4';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const VideoContainer = styled.video`
+const VideoContainer = styled.div`
   width: 42.5rem;
-  height: 23.9375rem;
+  height: 29.2375rem;
   border: 1px solid var(--Gray3, #BFC4D8);
   background: var(--White, #FFF);
-  margin-bottom: 1.56rem;
+  position : relative;
 `;
 
-const TimeLine = styled.div`
-  width: 42.5rem;
-  height: 3.75rem;
-  border: 1px solid var(--Gray3, #BFC4D8);
-  background: var(--White, #FFF);
-`;
+const VideoElement = styled.video`
+  width : 100%;
+  height : 100%;
+  position : absolute;
+`
 
 function VideoComponent() {
   const [videoUrl, setVideoUrl] = useState('');
@@ -73,8 +72,9 @@ function VideoComponent() {
   return (
     <Wrapper>
       {/* <VideoContainer src={videoUrl} controls /> */}
-      <VideoContainer src={testVideo} controls />
-      <TimeLine />
+      <VideoContainer>
+        <VideoElement src={testVideo} controls />
+      </VideoContainer>
     </Wrapper>
   );
 }
