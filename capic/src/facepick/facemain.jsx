@@ -6,7 +6,7 @@ import SliderComponent from "./slider";
 import Slider from "react-slick";
 import axios from 'axios'
 import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider0 from "../testimg/gongyoo2.jpg";
 import Slider1 from "../testimg/goognyoo.png";
 import Slider2 from "../testimg/img_1.png";
@@ -17,6 +17,11 @@ import Slider6 from "../testimg/seho.png";
 import Slider7 from "../testimg/yoo1.png";
 import Slider8 from "../image/main1.png";
 import { Link } from "react-router-dom";
+import Recoil from 'recoil';
+import {imgListState, pickListState} from '../recoil';
+import { useRecoilState } from "recoil";
+
+
 
 const ComWrapper=styled.div`
     width : 100%;
@@ -59,17 +64,20 @@ line-height: normal;
 `;
 
 
-
 function FaceMain(){
+
+    const [imgList, setImgList] = useRecoilState(imgListState);
+    const [pickList, setPickList] = useRecoilState(pickListState);
 
     const folder = sessionStorage.getItem("uuid"); // 폴더명
     const file = sessionStorage.getItem("fileName"); // 파일명
+
     const [responseFolder, setResponseFolder] = useState(null);
     const [responseVideo, setResponseVideo] = useState(null);
 
     //선택완료 클릭시비디오이름, 이미지 폴더이름 보내기(post)
     //"https://capic.co.kr/video/flask-mosaic?folderName=test"
-    //https://capic.co.kr/video/flask-mosaic?folderName=${folder}
+    //https://capic.co.kr/video/flask-mosaic?folderName=${folder
     const handleSubmit = () => {
         axios.post(`http://localhost:8080/video/flask-mosaic?folderName=test`, {
             "imageName" :["person1","person2","person3"],
@@ -102,6 +110,12 @@ function FaceMain(){
         Slider7,
         //Slider8
     ];
+    
+    useEffect(()=>{
+        setImgList([Slider0, Slider1, Slider2, Slider3, Slider4, Slider5, Slider6, Slider7, Slider8]);
+    },[])
+
+    
     const mappedData = urlData.map((item, index) => ({ [index]: item })); //mapping
     console.log(mappedData);
 
