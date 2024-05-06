@@ -88,8 +88,8 @@ function Left(){
             console.log("No file selected.");
             return;
         }
-        // console.log('선택된 파일 : ', file);
-        // console.log("name : " + file.name);
+        console.log('선택된 파일 : ', file);
+        console.log("name : " + file.name);
         
         // 확장자 검사
         // const fileExt = selectedFile.split('.').pop();
@@ -126,11 +126,11 @@ function Left(){
         };
     
         myBucket.putObject(params)
-        // .on('httpUploadProgress', (evt) => {
-        //     const progress = Math.round((evt.loaded / evt.total) * 100);
-        //     setProgress(progress); // 진행 상태 업데이트
-        //     console.log("Upload Progress: ", progress + "%");
-        // }) 
+        .on('httpUploadProgress', (evt) => {
+            const progress = Math.round((evt.loaded / evt.total) * 100);
+            setProgress(progress); // 진행 상태 업데이트
+            console.log("Upload Progress: ", progress + "%");
+        }) 
         .send((err) => {
             if (err) console.log(err);
             else console.log("Upload success");

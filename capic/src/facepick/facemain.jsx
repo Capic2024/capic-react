@@ -85,13 +85,13 @@ function FaceMain(){
         })
         .then(response => {
             console.log('Response:', response.data);
-            //setResponseFolder(response.data.folderName);
-            //setResponseVideo(response.data.videoName);
-            setResponseVideo(response.data.data);
+            setResponseFolder(response.data.folderName); //server에서 받아온 비디오 폴더명 지정
+            setResponseVideo(response.data.videoName); //비디오 파일명 지정
+            //setResponseVideo(response.data.data);
             //console.log("video name : "+responseVideo);
             console.log("test : "+response.data.data);
-            sessionStorage.setItem("mosicFolder", responseFolder);
-            sessionStorage.setItem("mosicVideoName", response.data.data);
+            sessionStorage.setItem("mosicFolder", responseFolder); //폴더명 지정
+            sessionStorage.setItem("mosicVideoName", response.data.data); //비디오명 지정
         })
         .catch(error => {
             console.error('Error:', error);

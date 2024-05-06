@@ -127,7 +127,42 @@ function Result() {
         console.log('Folder contents deleted successfully');
         sessionStorage.clear()
     };
+
+    async function downloadFile(bucketName, fileKey) {
+        try {
+            const params = {
+                Bucket: bucketName,
+                Key: fileKey
+            };
     
+            const data = await s3.getObject(params).promise();
+
+            const blob = new Blob([data.Body], { type: data.ContentType });
+            const downloadUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.setAttribute('download', fileKey.split('/').pop());
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+            URL.revokeObjectURL(downloadUrl);
+        } catch (err) {
+            console.error("Failed to download file:", err);
+        }
+    }
+    
+    const handleDownload = async () => {
+        const bucketName = process.env.REACT_APP_bucket;
+        const uuid = sessionStorage.getItem("uuid");
+        const fileName = sessionStorage.getItem("fileName");
+        if (!fileName) {
+            alert('File not found!');
+            return;
+        }
+        const fileKey = `${uuid}/${fileName}`;
+        await downloadFile(bucketName, fileKey);
+    };
+
     return (
         <>
             <Wrapper>
@@ -141,7 +176,7 @@ function Result() {
                         <Font>다른 영상 만들기</Font>
                     </FilePlus></Link>
                     
-                    <Download onClick={handleDelete}>
+                    <Download onClick={handleDownload}>
                         <img src={down}/>
                         <Font>다운로드</Font>
                     </Download>
