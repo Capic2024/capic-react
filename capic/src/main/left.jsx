@@ -89,8 +89,8 @@ function Left(){
             console.log("No file selected.");
             return;
         }
-        console.log('선택된 파일 : ', file);
-        console.log("name : " + file.name);
+        //console.log('선택된 파일 : ', file);
+        //console.log("name : " + file.name);
         
         // 확장자 검사
         // const fileExt = selectedFile.split('.').pop();
@@ -135,17 +135,23 @@ function Left(){
         }) 
         .send((err) => {
             if (err) console.log(err);
-            else console.log("Upload success");
+            else 
+            {
+                console.log("Upload success");
             
-            axios.post(`http://localhost:8080/video/flask-target?folderName=${uuid}&videoName=${file.name}`, {
-            })
-            .then(response => {
-                console.log('Response:', response.data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-
+                axios.post(`http://localhost:8080/video/flask-target?folderName=${uuid}&videoName=${file.name}`, {
+                })
+                .then(response => {
+                    console.log('Response:', response.data);
+                    console.log('person : ', response.data.data.personSize);
+                    sessionStorage.setItem('size', response.data.data.personSize);
+                    navigate('/pick');
+                    
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
         });
 
         
