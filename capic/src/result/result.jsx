@@ -161,6 +161,7 @@ function Result() {
         }
         const fileKey = `${uuid}/${fileName}`;
         await downloadFile(bucketName, fileKey);
+        sessionStorage.clear();
     };
 
     return (
@@ -176,10 +177,12 @@ function Result() {
                         <Font>다른 영상 만들기</Font>
                     </FilePlus></Link>
                     
+                    <Link to="/">
                     <Download onClick={handleDownload}>
                         <img src={down}/>
                         <Font>다운로드</Font>
                     </Download>
+                    </Link>
                 </ButtonContainer>
             </Wrapper>
         </>

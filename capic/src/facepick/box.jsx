@@ -99,14 +99,16 @@ function Box({ url }) {
             </GridItem>
 
         </PickWrapper>
+
+        // <Wrapper>
+        //  {/* <img src={url} alt="Selected Image" /> */}
+        //     <Logo src={logo} />
+        //     <Comment>블러 처리 제외할<br/>얼굴을 선택해 주세요.</Comment>
+        // </Wrapper>
     );
 }
 
 export default Box;
 
-// <Wrapper>
-        //  {/* <img src={url} alt="Selected Image" /> */}
-        //     <Logo src={logo} />
-        //     <Comment>블러 처리 제외할<br/>얼굴을 선택해 주세요.</Comment>
-        // </Wrapper>
+
 

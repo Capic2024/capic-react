@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AWS from 'aws-sdk';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 const Wrapper = styled.div`
     display: flex;
@@ -129,11 +130,22 @@ function Left(){
         .on('httpUploadProgress', (evt) => {
             const progress = Math.round((evt.loaded / evt.total) * 100);
             setProgress(progress); // 진행 상태 업데이트
+            
             console.log("Upload Progress: ", progress + "%");
         }) 
         .send((err) => {
             if (err) console.log(err);
             else console.log("Upload success");
+            
+            axios.post(`http://localhost:8080/video/flask-target?folderName=${uuid}&videoName=${file.name}`, {
+            })
+            .then(response => {
+                console.log('Response:', response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
         });
 
         

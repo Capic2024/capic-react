@@ -84,7 +84,7 @@ function Slider({urlData}){
                     <Slide {...settings}>
                                 {urlData.map((urlData, index) => (
                                     <div key={index} style={SlideContainer}>
-                                        <SliderContent urlData={urlData}/>
+                                        <SliderContent urlData={urlData} index={index}/>
                                     </div>
                                 ))}
                     </Slide>

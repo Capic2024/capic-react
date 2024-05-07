@@ -116,44 +116,8 @@ function FaceMain(){
     },[])
 
     
-    const mappedData = urlData.map((item, index) => ({ [index]: item })); //mapping
-    console.log(mappedData);
-
-    const [list, setList] = useState([]); // 목록 배열 생성
-
-    // 추가 함수 => 
-    function updateList(itemId) { 
-    setList((prevList) =>
-      prevList.map((item) =>
-        item.id === itemId ? {...item} : item 
-      )
-    );
-    }
-
-    function test(array){
-        
-    }
-
-    function updateList(item) {
-        const index = urlData.indexOf(item); // 아이템의 인덱스를 찾음
-        if (index !== -1) { // 만약 아이템이 발견되면,
-          setList((prevList) => {
-            // 이미 리스트에 있는지 확인
-            if (prevList.includes(item)) {
-              return prevList; // 이미 있는 경우에는 이전 리스트를 반환
-            }
-            // 새로운 아이템을 추가한 배열을 반환
-            return [...prevList, item];
-          });
-        }
-      }
-
-     // 삭제 함수
-    function deleteList(itemId) {
-    setList((prevList) => {
-      return prevList.filter((item) => item.id !== itemId); // 삭제하고 싶은 id 값을 입력 받아서 해당 id 값이 아닌 요소들을 리턴
-    });
-    }
+    // const mappedData = urlData.map((item, index) => ({ [index]: item })); //mapping
+    // console.log(mappedData);
 
 
     //const [isActive, setIsActive] = useState(false);
@@ -169,8 +133,8 @@ function FaceMain(){
             <Header/>
             <Wrapper>
                 <LeftComponent>
-                {/*<Box urlData={urlData}/>*/}
-                    <Box/>
+                <Box urlData={urlData}/>
+                    {/* <Box/> */}
                     <Link to="/mosicloading"><Button onClick={handleSubmit}>선택 완료</Button></Link>
                 </LeftComponent>
                 <VideoComponent/>

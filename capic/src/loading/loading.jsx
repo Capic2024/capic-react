@@ -35,13 +35,13 @@ function Loading(){
 
     const [ment, setMent] = useState("얼굴 추출중");
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            success();
-            redirectToPick();
-        }, 5000);
-        return () => clearTimeout(timer);
-    }, []);
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         success();
+    //         redirectToPick();
+    //     }, 5000);
+    //     return () => clearTimeout(timer);
+    // }, []);
 
     const success = () => {
         setMent("모자이크 처리중");

@@ -40,15 +40,14 @@ const XCircle = styled.img`
 
 
 
-function SliderContent({ urlData }) {
+function SliderContent({ urlData, index }) {
     const [isActive, setIsActive] = useState(false);
     console.log("slider:" + urlData);
 
     const toggleClass = () => {
         setIsActive(!isActive); 
-        //onSelectImage(url.index); 
-        //console.log("url : "+url)
-        //console.log("url : "+index);
+        console.log("index: " + index);
+        //여기서 pick 배열 가져다 쓰기
     };
 
     return (
