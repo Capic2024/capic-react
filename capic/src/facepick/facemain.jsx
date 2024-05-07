@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import Recoil from 'recoil';
 import {imgListState, pickListState} from '../recoil';
 import { useRecoilState } from "recoil";
+import AWS from 'aws-sdk';
 
 
 
@@ -66,6 +67,8 @@ line-height: normal;
 
 function FaceMain(){
 
+    const size = parseInt(sessionStorage.getItem('size'));
+
     const [imgList, setImgList] = useRecoilState(imgListState);
     const [pickList, setPickList] = useRecoilState(pickListState);
 
@@ -79,9 +82,9 @@ function FaceMain(){
     //"https://capic.co.kr/video/flask-mosaic?folderName=test"
     //https://capic.co.kr/video/flask-mosaic?folderName=${folder
     const handleSubmit = () => {
-        axios.post(`http://localhost:8080/video/flask-mosaic?folderName=test`, {
+        axios.post(`http://localhost:8080/video/flask-mosaic?folderName=${folder}`, {
             "imageName" :["person1","person2","person3"],
-            "videoName":"cutVideo.mp4"
+            "videoName":file
         })
         .then(response => {
             console.log('Response:', response.data);
@@ -106,13 +109,106 @@ function FaceMain(){
         //Slider3,
         //Slider4,
         Slider5,
-        Slider6,
-        Slider7,
+        //Slider6,
+        //Slider7,
         //Slider8
     ];
     
+    const ACCESS_KEY=process.env.REACT_APP_accessKeyId;
+    const SECRET_ACCESS_KEY=process.env.REACT_APP_secretAccessKey;
+    const S3_BUCKET=process.env.REACT_APP_bucket;
+    const REGION = process.env.REACT_APP_region;
+    const [imageUrls, setImageUrls] = useState([]);
+
+    // useEffect(() => {
+
+    //     // AWS 설정 업데이트
+    //     AWS.config.update({
+    //         accessKeyId: ACCESS_KEY,
+    //         secretAccessKey: SECRET_ACCESS_KEY,
+    //         region: REGION
+    //     });
+
+    //     // S3 인스턴스 생성
+    //     const s3 = new AWS.S3();
+
+    //     // 이미지가 저장된 버킷 이름과 경로
+    //     const bucketName = S3_BUCKET;
+    //     const folderName = folder+'/';
+
+    //     // 버킷 내 이미지 파일 리스트 가져오기
+    //     const params = {
+    //         Bucket: bucketName,
+    //         Prefix: folderName
+    //     };
+
+    //     s3.listObjectsV2(params, (err, data) => {
+    //         if (err) {
+    //             console.error('Error retrieving images from S3:', err);
+    //         } else {
+    //             // 이미지 URL 생성
+    //             const urls = data.Contents.map(item => {
+    //                 console.log("item.key: "+item.Key);
+    //                 return `https://${bucketName}.s3.amazonaws.com/${item.Key}/person1/1.jpeg`;
+                    
+    //             });
+    //             // 이미지 URL 상태 업데이트
+    //             setImageUrls(urls);
+    //             console.log("imageUrls : "+imageUrls);
+                
+    //         }
+    //     });
+    // }, []);
+
+    useEffect(() => {
+        // AWS 설정 업데이트
+        AWS.config.update({
+            accessKeyId: ACCESS_KEY,
+            secretAccessKey: SECRET_ACCESS_KEY,
+            region: REGION
+        });
+    
+        // S3 인스턴스 생성
+        const s3 = new AWS.S3();
+    
+        if (size > 0) {
+            // 버킷 내 이미지 파일 리스트 가져오기
+            const bucketName = S3_BUCKET;
+            const folderName = `${folder}/`;
+    
+            const promises = [];
+            for (let i = 1; i <= size; i++) {
+                const params = {
+                    Bucket: bucketName,
+                    Key: `${folderName}person${i}/1.jpeg`
+                };
+    
+                // 각 이미지에 대해 S3에서 getObject 호출
+                const promise = s3.getObject(params).promise().then(data => {
+                    // Blob 객체를 이용해 브라우저에서 바로 사용할 수 있는 URL 생성
+                    const blob = new Blob([data.Body], { type: data.ContentType });
+                    return URL.createObjectURL(blob);
+                }).catch(err => {
+                    console.error(`Error fetching image person${i}/1.jpeg:`, err);
+                    return ''; // 오류가 나면 빈 문자열 반환
+                });
+                promises.push(promise);
+            }
+    
+            // 모든 프로미스가 완료되면 상태 업데이트
+            Promise.all(promises).then(urls => {
+                // 오류가 나지 않은 유효한 URL만 필터링
+                const validUrls = urls.filter(url => url !== '');
+                setImageUrls(validUrls);
+                console.log("url : "+imageUrls);
+            });
+        }
+    }, []);
+
+
+
     useEffect(()=>{
-        setImgList([Slider0, Slider1, Slider2, Slider3, Slider4, Slider5, Slider6, Slider7, Slider8]);
+        setImgList([Slider5, Slider6, Slider7]);
     },[])
 
     

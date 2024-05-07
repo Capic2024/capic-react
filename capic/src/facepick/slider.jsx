@@ -39,6 +39,9 @@ const Div = styled.div`
 
 function Slider({urlData}){
 
+    const size = parseInt(sessionStorage.getItem('size'));
+    if(size>5){size=5;}
+
     const TitleStyle = {
         color: '#191B24',
         fontFamily: 'NanumSquare',
@@ -66,7 +69,7 @@ function Slider({urlData}){
     const settings = {
         infinite: false,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: size,
         slidesToScroll: 5,
         dots: true,
         dotsClass: "slick-dots",
