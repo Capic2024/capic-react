@@ -61,8 +61,6 @@ function Left(){
 
     //s3관련
     const[progress, setProgress] = useState(0);
-    // const [selectedFile, setSelectedFile] = useState(null);
-    // const [showAlert, setShowAlert] = useState(false);
 
     const ACCESS_KEY=process.env.REACT_APP_accessKeyId;
     const SECRET_ACCESS_KEY=process.env.REACT_APP_secretAccessKey;
@@ -89,16 +87,6 @@ function Left(){
             console.log("No file selected.");
             return;
         }
-        //console.log('선택된 파일 : ', file);
-        //console.log("name : " + file.name);
-        
-        // 확장자 검사
-        // const fileExt = selectedFile.split('.').pop();
-        // console.log("확장자 : "+fileExt);
-        // if(fileExt !== 'mp4' || fileExt !=='avi' || fileExt !== 'mov'){
-        //         alert('동영상을 선택해주세요');
-        //         return;
-        // } //비디오 확장자 추가
     
         setProgress(0);
         uploadFile(file); // uploadFile 함수에 file 객체를 직접 전달
@@ -106,19 +94,12 @@ function Left(){
         navigate('/loading');
     }
 
-
-    //     setProgress(0);
-    //     uploadFile(selectedFile);
-    //     setLoading(true);
-    //     navigate('/loading');
-    // }
     
     const uploadFile = (file) => {
         const uuid = uuidv4();
         sessionStorage.setItem('uuid', uuid);
         sessionStorage.setItem('fileName',file.name);
         
-        //sessionStorage.getItem('uuid');
         const params = {
             ACL: 'public-read',
             Body: file,
