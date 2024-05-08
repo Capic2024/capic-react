@@ -6,7 +6,7 @@ import SliderComponent from "./slider";
 import Slider from "react-slick";
 import axios from 'axios'
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {imgListState, pickListState} from '../recoil';
 import { useRecoilState } from "recoil";
 import AWS from 'aws-sdk';
@@ -60,6 +60,7 @@ function FaceMain(){
 
     const [imgList, setImgList] = useRecoilState(imgListState);
     const [pickList, setPickList] = useRecoilState(pickListState);
+    const [sendList, setSendList] = useState([]);
 
     const folder = sessionStorage.getItem("uuid"); // 폴더명
     const file = sessionStorage.getItem("fileName"); // 파일명
@@ -71,13 +72,25 @@ function FaceMain(){
     //"https://capic.co.kr/video/flask-mosaic?folderName=test"
     //https://capic.co.kr/video/flask-mosaic?folderName=${folder}
 
-    const handleSubmit = () => {
-        axios.post(`https://capic.co.kr/video/flask-mosaic?folderName=test`, {
-            "imageName" :["person1","person2","person3"],
+    useEffect(() => {
+        const newSendList = pickList.map(index => {
+            return `person${index + 1}`;
+        });
+        setSendList(newSendList);
+    }, [pickList]);
+
+    const handleSubmit = () => {        
+        //console.log("sendList : "+sendList);
+        
+        axios.post(`http://localhost:8080/video/flask-mosaic?folderName=test`, {
+            "imageName" :sendList,
+            //"imageName" :["person1","person2","person3"],
             //"videoName":file
             "videoName" : "cutVideo.mp4"
         })
         .then(response => {
+            //페이지 렌더링
+            //if(response.data.data.code == "1000"){useNavigate('/result');}
             console.log('Response:', response.data);
             setResponseFolder(response.data.folderName); //server에서 받아온 비디오 폴더명 지정
             setResponseVideo(response.data.videoName); //비디오 파일명 지정
@@ -97,7 +110,6 @@ function FaceMain(){
     const SECRET_ACCESS_KEY=process.env.REACT_APP_secretAccessKey;
     const S3_BUCKET=process.env.REACT_APP_bucket;
     const REGION = process.env.REACT_APP_region;
-    const [imageUrls, setImageUrls] = useState([]);
 
     //s3이미지 가져오기
 
