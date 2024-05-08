@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import logo from '../image/graylogo.svg';
-import test from '../image/main2.png';
 import xcircle from '../image/grayxcircle.svg';
-import { useState } from "react";
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { imgListState, pickListState } from '../recoil';
+import { useEffect } from "react";
 
 const Wrapper = styled.div`
 width: 448px;
@@ -47,12 +48,14 @@ const PickWrapper = styled.div`
     grid-column-gap: 1rem;
     padding-top:1.5rem;
 `
-const GridItem=styled.div`
-    border-radius: 0.5rem;
-    width: 6.25rem;
-    height:6.25rem;
-    position : relative;
-`
+
+const gridStyle={
+    borderRadius:"0.5rem",
+    width: "6.25rem",
+    height:"6.25rem",
+    position : "relative",
+    cursor : "pointer"
+}
 
 const XCircle = styled.img`
   position: absolute;
@@ -67,48 +70,47 @@ const XCircle = styled.img`
 const ImgCon = styled.img`
     width: 6.25rem;
     height:6.25rem;
+    border-Radius: 0.5rem;
 `
 
-function Box({ url }) {
+function Box() {
+    const imgs = useRecoilValue(imgListState);
+    const [pickList, setPickList] = useRecoilState(pickListState);
+
+    // useEffect(() => {
+        // console.log("pickList updated:", pickList);
+    // }, [pickList]);
     
     return (
-        <PickWrapper>
-            <GridItem>
-                <ImgCon src={test}/>
-                <XCircle src={xcircle}></XCircle>
-            </GridItem>
-
-            <GridItem>
-                <ImgCon src={test}/>
-                <XCircle src={xcircle}></XCircle>
-            </GridItem>
-
-            <GridItem>
-                <ImgCon src={test}/>
-                <XCircle src={xcircle}></XCircle>
-            </GridItem>
-
-            <GridItem>
-                <ImgCon src={test}/>
-                <XCircle src={xcircle}></XCircle>
-            </GridItem>
-
-            <GridItem>
-                <ImgCon src={test}/>
-                <XCircle src={xcircle}></XCircle>
-            </GridItem>
-
-        </PickWrapper>
-
-        // <Wrapper>
-        //  {/* <img src={url} alt="Selected Image" /> */}
-        //     <Logo src={logo} />
-        //     <Comment>블러 처리 제외할<br/>얼굴을 선택해 주세요.</Comment>
-        // </Wrapper>
+        <>
+            {pickList.length === 0 ? (
+                <Wrapper>
+                    <Logo src={logo} />
+                    <Comment>블러 처리 제외할<br/>얼굴을 선택해 주세요.</Comment>
+                </Wrapper>
+            ) : (
+                <PickWrapper>
+                    {imgs.map((url, originalIndex) => (
+                        pickList.includes(originalIndex) && (
+                            <div key={originalIndex} style={gridStyle} onClick={() => {
+                                console.log("original index: " + originalIndex);
+                                const updatedPickList = pickList.filter(item => item !== originalIndex);
+                                setPickList(updatedPickList);
+                            }}>
+                                <ImgCon src={url} />
+                                <XCircle src={xcircle} />
+                            </div>
+                        )
+                    ))}
+                </PickWrapper>
+            )}
+        </>
     );
 }
 
 export default Box;
+
+
 
 
 

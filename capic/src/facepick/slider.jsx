@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import React,{useEffect, useState} from "react";
 import Slide from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,8 +8,6 @@ import { Link } from "react-router-dom";
 import left from "../image/left.png";
 import right from "../image/right.svg";
 // import React, { useState } from 'react';
-import {imgListState, pickListState} from '../recoil';
-import { useRecoilValue } from "recoil";
 
 
 const ArrowButton = styled.img`
@@ -76,9 +73,6 @@ function Slider({urlData}){
         prevArrow: <CustomPrevArrow />, 
         nextArrow: <CustomNextArrow />, 
     };
-
-    const imgList = useRecoilValue(imgListState);
-    console.log("여기서 출력"+imgList);
 
     return(
         <Wrapper>

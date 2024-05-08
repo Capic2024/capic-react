@@ -2,6 +2,9 @@ import React from "react";
 import styled from 'styled-components';
 import { useState } from 'react';
 import xcircle from '../image/XCircle.svg';
+import { pickListState } from '../recoil';
+import { useRecoilValue, useRecoilState } from "recoil";
+import { useEffect } from "react";
 
 const Div = styled.div`
     padding-top : 1.5rem;
@@ -39,15 +42,25 @@ const XCircle = styled.img`
 `;
 
 
-
 function SliderContent({ urlData, index }) {
+    const [pickList, setPickList] = useRecoilState(pickListState);
     const [isActive, setIsActive] = useState(false);
-    console.log("slider:" + urlData);
+
+    useEffect(() => {
+        setIsActive(pickList.includes(index));
+    }, [pickList, index]);
 
     const toggleClass = () => {
-        setIsActive(!isActive); 
-        console.log("index: " + index);
-        //여기서 pick 배열 가져다 쓰기
+        setIsActive(!isActive);
+
+        const indexExists = pickList.includes(index);
+        if (indexExists) {
+            const updatedPickList = pickList.filter(item => item !== index);
+            setPickList(updatedPickList);
+        } else {
+            const updatedPickList = [...pickList, index];
+            setPickList(updatedPickList);
+        }
     };
 
     return (
