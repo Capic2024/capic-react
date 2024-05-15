@@ -56,7 +56,8 @@ line-height: normal;
 
 function FaceMain(){
 
-    const size = parseInt(sessionStorage.getItem('size'));
+    //const size = parseInt(sessionStorage.getItem('size'));
+    const size=5;
 
     const [imgList, setImgList] = useRecoilState(imgListState);
     const [pickList, setPickList] = useRecoilState(pickListState);
@@ -131,7 +132,7 @@ function FaceMain(){
             for (let i = 1; i <= size; i++) {
                 const params = {
                     Bucket: bucketName,
-                    Key: `test/person${i}/1.jpeg`
+                    Key: `d8ee521d-539e-4bda-a711-e362853dcfc0/person${i}/1.jpeg`
                     //Key: `${folderName}person${i}/1.jpeg`
                 };
     

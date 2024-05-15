@@ -20,6 +20,8 @@ const BoxStyle = styled.div`
     height: 11.25rem;
     border-radius: 0.5rem;
     cursor: pointer;
+    margin-left: 1rem;
+    margin-right: 1rem;
 `;
 
 const ImgStyle = styled.img`

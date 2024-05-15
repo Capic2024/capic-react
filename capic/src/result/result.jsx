@@ -130,6 +130,7 @@ function Result() {
 
     async function downloadFile(bucketName, fileKey) {
         try {
+        
             const params = {
                 Bucket: bucketName,
                 Key: fileKey
@@ -155,11 +156,12 @@ function Result() {
         const bucketName = process.env.REACT_APP_bucket;
         const uuid = sessionStorage.getItem("uuid");
         const fileName = sessionStorage.getItem("fileName");
-        if (!fileName) {
+        const fileKey = 'd8ee521d-539e-4bda-a711-e362853dcfc0/result.mp4';
+        if (!"result.mp4") {
             alert('File not found!');
             return;
         }
-        const fileKey = `${uuid}/${fileName}`;
+        //const fileKey = `${uuid}/${fileName}`;
         await downloadFile(bucketName, fileKey);
         sessionStorage.clear();
     };

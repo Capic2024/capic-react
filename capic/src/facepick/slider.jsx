@@ -49,6 +49,11 @@ function Slider({urlData}){
         marginTop:"3rem",
     };
 
+    const SliderStyle = {
+        display: "flex",
+        justifyContent:"space-around",
+    }
+
     const SlideContainer = {
         display: 'flex',
         flexDirection : 'column'
@@ -78,7 +83,7 @@ function Slider({urlData}){
         <Wrapper>
             <Div>
                 <p style={TitleStyle}>CAPIC이 인식한 얼굴</p>
-                    <Slide {...settings}>
+                    <Slide {...settings} style={SliderStyle}>
                                 {urlData.map((urlData, index) => (
                                     <div key={index} style={SlideContainer}>
                                         <SliderContent urlData={urlData} index={index}/>

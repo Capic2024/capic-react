@@ -119,8 +119,9 @@ function VideoComponent() {
 
   useEffect(() => {
     const getVideo = async () => {
-      const filename = uuid+'/'+name;
-
+      //const filename = uuid+'/'+name;
+      const filename = 'd8ee521d-539e-4bda-a711-e362853dcfc0/pisik.mp4';
+      
       try {
         const data = await s3.getObject({
           Bucket: S3_BUCKET,
