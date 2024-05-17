@@ -38,7 +38,7 @@ function Loading(){
     useEffect(() => {
         const timer = setTimeout(() => {
             redirectToResult();
-        }, 3000);
+        }, 5000);
         return () => clearTimeout(timer);
     }, []);
 

@@ -39,12 +39,12 @@ function Loading(){
         const timer = setTimeout(() => {
             success();
             redirectToPick();
-        }, 3000);
+        }, 5000);
         return () => clearTimeout(timer);
     }, []);
 
     const success = () => {
-        setMent("모자이크 처리중");
+       //setMent("모자이크 처리중");
     };
 
     const redirectToPick = () => {
