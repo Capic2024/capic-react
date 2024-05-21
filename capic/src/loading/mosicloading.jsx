@@ -35,16 +35,16 @@ function Loading(){
 
     const [ment, setMent] = useState("모자이크 처리중");
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            redirectToResult();
-        }, 5000);
-        return () => clearTimeout(timer);
-    }, []);
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         redirectToResult();
+    //     }, 5000);
+    //     return () => clearTimeout(timer);
+    // }, []);
 
-    const redirectToResult = () => {
-        window.location.href = "/result";
-    };
+    // const redirectToResult = () => {
+    //     window.location.href = "/result";
+    // };
 
     return(
         <Componentstyle>
