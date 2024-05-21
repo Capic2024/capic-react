@@ -155,9 +155,9 @@ function Result() {
     const handleDownload = async () => {
         const bucketName = process.env.REACT_APP_bucket;
         const uuid = sessionStorage.getItem("uuid");
-        const fileName = sessionStorage.getItem("fileName");
-        const fileKey = 'd8ee521d-539e-4bda-a711-e362853dcfc0/result.mp4';
-        if (!"result.mp4") {
+        const fileName = sessionStorage.getItem("mosicVideoName");
+        const fileKey = 'test3/'+fileName;
+        if (!fileName) {
             alert('File not found!');
             return;
         }
