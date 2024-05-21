@@ -91,7 +91,7 @@ function FaceMain(){
         })
         .then(response => {
             //페이지 렌더링
-            //if(response.data.data.code == "1000"){useNavigate('/result');}
+            if(response.data.data.code == "1000"){useNavigate('/result');}
             console.log('Response:', response.data);
             setResponseFolder(response.data.folderName); //server에서 받아온 비디오 폴더명 지정
             setResponseVideo(response.data.videoName); //비디오 파일명 지정
