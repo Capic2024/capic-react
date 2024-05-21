@@ -38,8 +38,8 @@ function Mosic(){
   });
 
   const s3 = new AWS.S3();
-  //const uuid = sessionStorage.getItem('uuid');
-  const name = sessionStorage.getItem('mosicVideoName');
+  const uuid = sessionStorage.getItem('uuid');
+  const name = sessionStorage.getItem('fileName');
 
   useEffect(() => {
     const getVideo = async () => {
