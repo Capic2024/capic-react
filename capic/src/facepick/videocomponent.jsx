@@ -120,7 +120,7 @@ function VideoComponent() {
   useEffect(() => {
     const getVideo = async () => {
       //const filename = uuid+'/'+name;
-      const filename = 'test/test1.mp4';
+      const filename = 'test/test2.mp4';
       
       try {
         const data = await s3.getObject({
