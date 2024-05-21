@@ -6,7 +6,7 @@ import SliderComponent from "./slider";
 import Slider from "react-slick";
 import axios from 'axios'
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {imgListState, pickListState} from '../recoil';
 import { useRecoilState } from "recoil";
 import AWS from 'aws-sdk';
@@ -58,6 +58,7 @@ function FaceMain(){
 
     //const size = parseInt(sessionStorage.getItem('size'));
     const size=5;
+    const navigate = useNavigate();
 
     const [imgList, setImgList] = useRecoilState(imgListState);
     const [pickList, setPickList] = useRecoilState(pickListState);
@@ -91,7 +92,7 @@ function FaceMain(){
         })
         .then(response => {
             //페이지 렌더링
-            if(response.data.data.code == "1000"){useNavigate('/result');}
+            if(response.data.data.code == "1000"){navigate('/result');}
             console.log('Response:', response.data);
             setResponseFolder(response.data.folderName); //server에서 받아온 비디오 폴더명 지정
             setResponseVideo(response.data.videoName); //비디오 파일명 지정
