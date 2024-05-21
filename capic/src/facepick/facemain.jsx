@@ -83,7 +83,7 @@ function FaceMain(){
     const handleSubmit = () => {        
         //console.log("sendList : "+sendList);
         
-        axios.post(`http://localhost:8080/video/flask-mosaic?folderName=test3`, {
+        axios.post(`http://localhost:8080/video/flask-mosaic?folderName=test`, {
             "imageName" :sendList,
             //"imageName" :["person1","person2","person3"],
             //"videoName":file
@@ -132,7 +132,7 @@ function FaceMain(){
             for (let i = 1; i <= size; i++) {
                 const params = {
                     Bucket: bucketName,
-                    Key: `test3/person${i}/1.jpeg`
+                    Key: `test/person${i}/1.jpeg`
                     //Key: `${folderName}person${i}/1.jpeg`
                 };
     
