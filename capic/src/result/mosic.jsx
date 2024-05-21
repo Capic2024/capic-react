@@ -44,7 +44,7 @@ function Mosic(){
   useEffect(() => {
     const getVideo = async () => {
       //const filename = uuid+'/'+name;
-      const filename = 'test/result.mp4';
+      const filename = 'test3/'+name;
 
       try {
         const data = await s3.getObject({
