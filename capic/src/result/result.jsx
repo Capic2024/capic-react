@@ -151,7 +151,7 @@ function Result() {
             console.error("Failed to download file:", err);
         }
     }
-    
+    //push
     const handleDownload = async () => {
         const bucketName = process.env.REACT_APP_bucket;
         const uuid = sessionStorage.getItem("uuid");
