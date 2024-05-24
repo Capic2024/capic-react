@@ -83,6 +83,7 @@ function FaceMain(){
 
     const handleSubmit = () => {        
         //console.log("sendList : "+sendList);
+        sessionStorage.setItem("vidurl",JSON.stringify(pickList));
         
         axios.post(`http://localhost:8080/video/flask-mosaic?folderName=test3`, {
             "imageName" :sendList,
