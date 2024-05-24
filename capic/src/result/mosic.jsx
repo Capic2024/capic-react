@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useState,useEffect } from "react";
 import AWS from 'aws-sdk';
 import resVid from '../testimg/processed.mp4'
+import { useRecoilState } from "recoil";
+import {pickListState} from '../recoil';
 
 const MosicComponent = styled.div`
 border: 1px solid var(--Gray3, #BFC4D8);
@@ -18,12 +20,14 @@ const VideoContainer = styled.video`
 
 function Mosic(){
 
+  
+
     //const uuid = sessionStorage.getItem('uuid');
 
     //const folderName = sessionStorage.getItem('mosicFolder');
     //const videoName = sessionStorage.getItem('mosicVideoName');
 
-  const [videoUrl, setVideoUrl] = useState('');
+  //const [videoUrl, setVideoUrl] = useState('');
 
   const ACCESS_KEY=process.env.REACT_APP_accessKeyId;
   const SECRET_ACCESS_KEY=process.env.REACT_APP_secretAccessKey;
@@ -41,28 +45,50 @@ function Mosic(){
   //const uuid = sessionStorage.getItem('uuid');
   const name = sessionStorage.getItem('mosicVideoName');
 
-  useEffect(() => {
-    const getVideo = async () => {
-      //const filename = uuid+'/'+name;
-      const filename = 'test3/'+name;
+  // useEffect(() => {
+  //   const getVideo = async () => {
+  //     //const filename = uuid+'/'+name;
+  //     const filename = 'test3/'+name;
 
-      try {
-        const data = await s3.getObject({
-          Bucket: S3_BUCKET,
-          Key: filename,
-        }).promise();
+  //     try {
+  //       const data = await s3.getObject({
+  //         Bucket: S3_BUCKET,
+  //         Key: filename,
+  //       }).promise();
 
-        const blob = new Blob([data.Body], { type: "video/mp4" });
-        const url = URL.createObjectURL(blob);
-        setVideoUrl(url);
-      } catch (error) {
-        console.error('Error fetching video from S3:', error);
-        setVideoUrl('');
-      }
-    };
+  //       const blob = new Blob([data.Body], { type: "video/mp4" });
+  //       const url = URL.createObjectURL(blob);
+  //       setVideoUrl(url);
+  //     } catch (error) {
+  //       console.error('Error fetching video from S3:', error);
+  //       setVideoUrl('');
+  //     }
+  //   };
+  //   getVideo();
+  // }, []);
 
-    getVideo();
-  }, []);
+  const pickList = sessionStorage.getItem("vidurl");
+  console.log(pickList);
+
+  if (pickList== "[0]" ){
+    var videoUrl = resVid;
+  }
+  else if(pickList == "[1]"){
+    var videoUrl = resVid;
+  }
+  else if(pickList == "[2]"){
+    var videoUrl = resVid;
+  }
+  else if(pickList == "[0,1]"){
+    var videoUrl = resVid;
+  }
+  else if(pickList == "[1,2]"){
+    var videoUrl = resVid;
+  }
+  else if(pickList == "[0,1,2]"){
+    var videoUrl = resVid;
+  }
+
 
     return(
         <MosicComponent>

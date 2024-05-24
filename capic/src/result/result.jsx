@@ -118,6 +118,9 @@ function Result() {
         }
     }
 
+    
+
+
     const handleDelete = async () => {
         const bucketName = process.env.REACT_APP_bucket;
         const folderPrefix = sessionStorage.getItem("uuid") + "/";
