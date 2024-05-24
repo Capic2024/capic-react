@@ -134,7 +134,7 @@ function FaceMain(){
             for (let i = 1; i <= size; i++) {
                 const params = {
                     Bucket: bucketName,
-                    Key: `test3/person${i}/1.jpeg`
+                    Key: `test3/person${i}/1.png`
                     //Key: `${folderName}person${i}/1.jpeg`
                 };
     
