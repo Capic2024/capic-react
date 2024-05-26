@@ -4,6 +4,12 @@ import AWS from 'aws-sdk';
 import resVid from '../testimg/processed.mp4'
 import { useRecoilState } from "recoil";
 import {pickListState} from '../recoil';
+import none from '../vid/none.mp4';
+import js from '../vid/js.mp4';
+import jssh from '../vid/jssh.mp4';
+import sh from '../vid/sh.mp4';
+import jh from '../vid/jh.mp4';
+import shjh from '../vid/jhsh.mp4';
 
 const MosicComponent = styled.div`
 border: 1px solid var(--Gray3, #BFC4D8);
@@ -71,22 +77,22 @@ function Mosic(){
   console.log(pickList);
 
   if (pickList== "[0]" ){
-    var videoUrl = resVid;
+    var videoUrl = js;
   }
   else if(pickList == "[1]"){
-    var videoUrl = resVid;
+    var videoUrl = sh;
   }
   else if(pickList == "[2]"){
-    var videoUrl = resVid;
+    var videoUrl = jh;
   }
   else if(pickList == "[0,1]"){
-    var videoUrl = resVid;
+    var videoUrl = jssh;
   }
   else if(pickList == "[1,2]"){
-    var videoUrl = resVid;
+    var videoUrl = shjh;
   }
   else if(pickList == "[0,1,2]"){
-    var videoUrl = resVid;
+    var videoUrl = none;
   }
 
 
